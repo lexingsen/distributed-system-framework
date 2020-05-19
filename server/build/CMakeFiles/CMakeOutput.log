@@ -1,0 +1,59 @@
+The system is: Linux - sh: 0: getcwd() failed: No such file or directory
+4.15.0-88-generic - sh: 0: getcwd() failed: No such file or directory
+x86_64
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/lsc/desktop/server/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6d347/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6d347.dir/build.make CMakeFiles/cmTC_6d347.dir/build
+make[1]: 进入目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_6d347.dir/testCCompiler.c.o
+/usr/bin/clang-6.0    -o CMakeFiles/cmTC_6d347.dir/testCCompiler.c.o   -c /home/lsc/desktop/server/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_6d347
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d347.dir/link.txt --verbose=1
+/usr/bin/clang-6.0      CMakeFiles/cmTC_6d347.dir/testCCompiler.c.o  -o cmTC_6d347 
+make[1]: 离开目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/lsc/desktop/server/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fc061/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fc061.dir/build.make CMakeFiles/cmTC_fc061.dir/build
+make[1]: 进入目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_fc061.dir/CMakeCCompilerABI.c.o
+/usr/bin/clang-6.0    -o CMakeFiles/cmTC_fc061.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_fc061
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc061.dir/link.txt --verbose=1
+/usr/bin/clang-6.0      CMakeFiles/cmTC_fc061.dir/CMakeCCompilerABI.c.o  -o cmTC_fc061 
+make[1]: 离开目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/lsc/desktop/server/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1464d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1464d.dir/build.make CMakeFiles/cmTC_1464d.dir/build
+make[1]: 进入目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_1464d.dir/testCXXCompiler.cxx.o
+/usr/bin/clang++-6.0     -o CMakeFiles/cmTC_1464d.dir/testCXXCompiler.cxx.o -c /home/lsc/desktop/server/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_1464d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1464d.dir/link.txt --verbose=1
+/usr/bin/clang++-6.0       CMakeFiles/cmTC_1464d.dir/testCXXCompiler.cxx.o  -o cmTC_1464d 
+make[1]: 离开目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/lsc/desktop/server/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c9476/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c9476.dir/build.make CMakeFiles/cmTC_c9476.dir/build
+make[1]: 进入目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_c9476.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/clang++-6.0     -o CMakeFiles/cmTC_c9476.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_c9476
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c9476.dir/link.txt --verbose=1
+/usr/bin/clang++-6.0       CMakeFiles/cmTC_c9476.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_c9476 
+make[1]: 离开目录“/home/lsc/desktop/server/build/CMakeFiles/CMakeTmp”
+
+

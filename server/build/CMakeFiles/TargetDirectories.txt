@@ -1,0 +1,5 @@
+/home/lsc/desktop/server/build/CMakeFiles/rebuild_cache.dir
+/home/lsc/desktop/server/build/CMakeFiles/edit_cache.dir
+/home/lsc/desktop/server/build/src/CMakeFiles/rebuild_cache.dir
+/home/lsc/desktop/server/build/src/CMakeFiles/server.dir
+/home/lsc/desktop/server/build/src/CMakeFiles/edit_cache.dir

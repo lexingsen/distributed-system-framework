@@ -10,16 +10,16 @@
 #include "system.h"
 #include "workSer.h"
 #include "selectSerThread.h"
-using namespace std;
+
 
 event_base* selectSerThread::_base = NULL;
-map<int, struct event*> selectSerThread::_eventMap;
+std::map<int, struct event*> selectSerThread::_eventMap;
 WorkSer* WorkSer::_workSer = NULL;
 
 typedef void (System::*PFUNC)();
 typedef struct{
-	int choice;
-	PFUNC pfunc;
+  int choice;	
+  PFUNC pfunc;
 }FuncMap;
 
 FuncMap funcMap[]={

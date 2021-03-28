@@ -7,7 +7,7 @@
 
 #ifndef __PUBLIC_H__
 #define __PUBLIC_H__
-enum option{
+enum CLIENT_OPTION_TYPE_E {
 	EN_INSERT=1,
 	EN_DELETE,
 	EN_UPDATE,

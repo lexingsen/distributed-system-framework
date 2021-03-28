@@ -15,9 +15,9 @@ private:
   unsigned short m_port;
   int m_fd;
 public:
-  int getFd();
-  unsigned short getPort();
-  std::string getIp();
+  int getFd() const;
+  unsigned short getPort() const;
+  std::string getIp() const;
 
   TcpClient();
   ~TcpClient();

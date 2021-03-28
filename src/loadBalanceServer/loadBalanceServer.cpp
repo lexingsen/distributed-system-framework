@@ -1,5 +1,6 @@
 #include "loadBalanceServer.h"
 #include "public.h"
+#include "logger.h"
 #include <unistd.h>
 
 PhysicalNode::PhysicalNode():m_cnt(0) {}
@@ -70,7 +71,7 @@ long MD5HashFunction::getHashValue(const std::string& sock) {
 
 ConsistentHashCircle::ConsistentHashCircle(HashFunction* fun) {
   if (!fun) {
-    LOG("not given hash function!");
+    LOG_FUNC_ERROR("parameter fun is nullptr");
     return;
   }
   this->m_fun = fun;
@@ -89,11 +90,11 @@ void ConsistentHashCircle::setHashFunction(HashFunction* fun) {
 
 int ConsistentHashCircle::addVirtualNode(PhysicalNode* node) {
   if (!node) {
-    LOG("the physical node is null!");
+    LOG_MSG("the physical node is null!");
     return -1;
   }
   if (node->getVirtualNodeCnt() <= 0) {
-    LOG("the physical node has not virtual node!");
+    LOG_MSG("the physical node has not virtual node!");
     return -1;
   }
   string sock = node->getIp() + to_string(node->getPort());
@@ -112,7 +113,7 @@ int ConsistentHashCircle::addVirtualNode(PhysicalNode* node) {
         this->m_virtualNodeCnt ++;
       }
     } else {
-      LOG("find hash conflict!");
+      LOG_MSG("find hash conflict!");
       return -1;
     }
     tmp = sock;
@@ -153,7 +154,7 @@ int ConsistentHashCircle::removeVirtualNode(PhysicalNode* node) {
   } else {
     cout << "============ virtual node list ============" << endl;
     for (auto x=m_virtualNodeMap->begin(); x!=m_virtualNodeMap->end(); ++x) {
-      cout << x->first << ":" << " ip:" << x->second->getFatherPhysicalNode()->getIp() << " port:" << x->second->getFatherPhysiaclNode()->getPort() << endl;
+      cout << x->first << ":" << " ip:" << x->second->getFatherPhysicalNode()->getIp() << " port:" << x->second->getFatherPhysicalNode()->getPort() << endl;
     }
     cout << "===========================================" << endl;
   }
@@ -209,15 +210,15 @@ LoadBalanceServer::LoadBalanceServer() {
   m_server = new TcpServer(ipForServer, portForServer);
 
 
-  struct event* listenServerEvent = event_new(m_base, m_server->getLinsenFd(), EV_READ|EV_PERSIST, LoadBalanceServer::listenServerCallBack, m_server);
+  struct event* listenServerEvent = event_new(m_base, m_server->getListenFd(), EV_READ|EV_PERSIST, LoadBalanceServer::listenServerCallBack, m_server);
   if (!listenServerEvent) {
-    LOG("event new error!");
+    LOG_FUNC_MSG("event_new()", errnoMap[errno]);
     return ;
   }
 
-  struct event* listenClientEvent = event_new(m_base, m_client->getLinsenFd(), EV_READ|EV_PERSIST, LoadBalanceServer::listenClientCallBack, m_client);
+  struct event* listenClientEvent = event_new(m_base, m_client->getListenFd(), EV_READ|EV_PERSIST, LoadBalanceServer::listenClientCallBack, m_client);
   if (!listenClientEvent) {
-    LOG("event new error!");
+    LOG_FUNC_MSG("event_new()", errnoMap[errno]);
     return ;
   }
 
@@ -254,7 +255,7 @@ void LoadBalanceServer::listenServerCallBack(int fd, short event, void *arg) {
   if (-1 == cfd) return;
   struct event* serverIOEvent = event_new(m_base, cfd, EV_READ|EV_PERSIST, LoadBalanceServer::ioEventCallBack, server);
   if (!serverIOEvent) {
-    LOG("event_new error!");
+    LOG_FUNC_MSG("event_new()", errnoMap[errno]);
     return;
   }
   m_eventMap->insert(make_pair(cfd, serverIOEvent));
@@ -295,7 +296,7 @@ void LoadBalanceServer::ioEventCallBack(int fd, short event, void *arg) {
     Json::Value value;
     Json::Reader reader;
     if (!reader.parse(msg.c_str(), value)) {
-      LOG("reader.parse error!");
+      LOG_MSG("reader.parse error!");
       return;
     }
     cout << msg.c_str() << endl;

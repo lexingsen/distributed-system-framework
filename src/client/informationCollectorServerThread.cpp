@@ -7,6 +7,9 @@
 
 #include "informationCollectorServerThread.h"
 
+std::map<int, struct event*> InformationCollectorServerThread::m_eventMap = std::map<int, struct event*>();
+struct event_base* InformationCollectorServerThread::m_base = nullptr;
+
 //信息采集器线程函数用来处理信息采集机器的连接
 InformationCollectorServerThread::InformationCollectorServerThread() {
 	LOG_FUNC_TRACE();

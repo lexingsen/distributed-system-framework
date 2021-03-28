@@ -4,12 +4,10 @@
 #include <iostream>
 using namespace std;
 
-#define LOG(str) \
-  cout << __FILE__ << ":" << __LINE__ << __TIMESTAMP__ \
-  << " " << str << endl;
 
 
-enum option{
+
+enum MAINSERVER_OPTION_TYPE_E {
   LOGIN = 1,
   REGISTER,
   QUERY,

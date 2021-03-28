@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/loadBalanceServer.dir/loadBalanceServer.cpp.o CMakeFiles/loadBalanceServer.dir/main.cpp.o CMakeFiles/loadBalanceServer.dir/tcpServer.cpp.o  -o ../../../bin/loadBalanceServer -lpthread 

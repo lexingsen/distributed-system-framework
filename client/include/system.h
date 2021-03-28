@@ -11,11 +11,11 @@
 #include <iostream>
 #include <json/json.h>
 #include "public.h"
-#include "worker.h"
+#include "subModule.h"
 
 using namespace std;
 
-class System{
+class System {
 public:
 	System();
 	~System();
@@ -25,7 +25,7 @@ public:
 	void Login();
 	void Exit();
 private:
-	Worker* _work;
+	SubModule* m_subModule;
 };
 
 #endif

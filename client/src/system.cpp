@@ -6,24 +6,28 @@
  ************************************************************************/
 
 #include "system.h"
-#include "workSer.h"
+#include "transfer.h"
 #include "public.h"
 
-typedef void (Worker::*PFUNC)();
-typedef struct FuncMap1{
-	int choice;
+typedef void (SubModule::*PFUNC)();
+typedef struct {
+	int type;
 	PFUNC pfunc;
-}FuncMap1;
+} SubModuleHandler;
 
-FuncMap1 funcMap1[] = {
-	{EN_INSERT,&Worker::Insert},
-	{EN_DELETE,&Worker::Delete},
-	{EN_UPDATE,&Worker::Update},
-	{EN_SEARCH,&Worker::Search}
+SubModuleHandler subModuleHandlerMap[] = {
+	{EN_INSERT, &SubModule::Insert},
+	{EN_DELETE, &SubModule::Delete},
+	{EN_UPDATE, &SubModule::Update},
+	{EN_SEARCH, &SubModule::Search}
 };
 
-System::System(){_work = new Worker();}
-System::~System(){delete _work;}
+System::System() {
+	m_subModule = new SubModule();
+}
+System::~System() {
+	delete m_subModule;
+}
 
 void System::menu(){
 	cout<<"====================="<<endl;
@@ -34,17 +38,6 @@ void System::menu(){
 }
 
 void System::Login(){
-	/*
-	string ip;
-	cout<<"please input the server ip address:";
-	cin>>ip;
-	getchar();
-
-	short port;
-	cout<<"please input the server port:";
-	cin>>port;
-	getchar();
-	*/
 	cout<<"=====this is login user interface====="<<endl;
 	string name,pw;
 	cout<<"please input your name:";
@@ -58,18 +51,18 @@ void System::Login(){
 	val["pw"] = pw.c_str();
 
 	//使用默认的ip和port进行发送
-	WorkSer::getWorkSer()->sendToWorkSer(val.toStyledString());
+	Transfer::getInstance()->sendToMainSer(val.toStyledString());
 	cout<<"已经将登录信息发送给主服务器!请等待..."<<endl;
 
 	//使用默认的ip和port进行发送
-	string recvMessage;
-	WorkSer::getWorkSer()->recvFromWorkSer(recvMessage);
+	string recvMsg;
+	Transfer::getInstance()->recvFromMainSer(recvMsg);
 	
-	cout<<"服务器:"<<recvMessage;
+	cout<<"服务器:"<<recvMsg;
 	
 	Json::Reader read;
 	Json::Value res;
-	if(!read.parse(recvMessage,res)){
+	if(!read.parse(recvMsg, res)){
 		cout<<"converse json object fail!errno"<<errno<<endl;
 		return;
 	}
@@ -95,16 +88,8 @@ void System::Login(){
 	}
 }
 
-void System::Register(){
-	/*
-	string ip;
-	cout<<"please input the server ip address:";
-	cin>>ip;
-
-	short port;
-	cout<<"please input the server port:";
-	cin>>port;
-	*/
+void System::Register() {
+	LOG_FUNC_TRACE();
 	cout<<"=====this is register user interface====="<<endl;
 	string name,pw;
 	cout<<"please input your name:";
@@ -118,12 +103,12 @@ void System::Register(){
 	val["pw"] = pw.c_str();
 
 	//使用默认的ip和port进行发送
-	WorkSer::getWorkSer()->sendToWorkSer(val.toStyledString());
+	Transfer::getInstance()->sendToMainSer(val.toStyledString());
 
 	cout<<"已经将注册信息发送给主服务器!请等待"<<endl;
 	string recvMessage;
 	//使用默认的ip和port进行发送
-	WorkSer::getWorkSer()->recvFromWorkSer(recvMessage);
+	Transfer::getInstance()->recvFromMainSer(recvMessage);
 	cout<<"服务器:"<<recvMessage<<endl;
 
 	Json::Reader read;

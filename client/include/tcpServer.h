@@ -9,22 +9,21 @@
 #define __TCPSERVER_H__
 #include <string>
 
-using namespace std;
 
-class TcpServer{
+class TcpServer {
 public:
-	TcpServer(const string& ip,short port);
+	TcpServer(const std::string& ip, unsigned short port);
 	int Accept();
 
-	int Send(int fd,const string& message);
-	int Recv(int fd,string& str);
+	int Send(int fd, const std::string& msg);
+	int Recv(int fd, std::string& msg);
 	int getListenFd();
 	short getPort();
-	string getIp();
+	std::string getIp();
 private:
 	int _listenFd;
 	short _port;
-	string  _ip;
+	std::string  _ip;
 };
 
 #endif

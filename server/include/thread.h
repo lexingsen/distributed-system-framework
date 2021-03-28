@@ -1,3 +1,9 @@
+/*
+ * @Description: 
+ * @Language: 
+ * @Author: 
+ * @Date: 2021-03-26 01:43:34
+ */
 #ifndef _THREAD_H_
 #define _THREAD_H_
 
@@ -12,7 +18,7 @@
 #include <iostream>
 
 
-class Thread{
+class Thread {
 private:
   pthread_t m_id;
   std::map<int, struct event*>* m_eventMap;

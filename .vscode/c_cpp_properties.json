@@ -4,17 +4,30 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}\\server\\include"
+                "${workspaceFolder}/server/include/",
+                "${workspaceFolder}/client/include/",
+                "${workspaceFolder}/thirdparty/"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "D:\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "/usr/bin/g++",
             "cStandard": "gnu17",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "Ubuntu18.04",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

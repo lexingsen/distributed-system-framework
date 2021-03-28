@@ -10,18 +10,17 @@
 #include <arpa/inet.h>
 #include <pthread.h>
 #include "tcpServer.h"
-using namespace std;
 
-class PysicalNode {
+class PhysicalNode {
 private:  
   int m_cnt;
-  string m_ip;
+  std::string m_ip;
   unsigned short m_port;
 public:
-  PysicalNode();
-  PysicalNode(int cnt, const string& io, unsigned short port);
+  PhysicalNode();
+  PhysicalNode(int cnt, const std::string& io, unsigned short port);
   int getVirtualNodeCnt();
-  void setPysicalNode(const string& ip, unsigned short port);
+  void setPhysicalNode(const std::string& ip, unsigned short port);
   string getIp();
   unsigned short getPort();
 };
@@ -29,12 +28,12 @@ public:
 class VirtualNode {
 private:
   long m_hashValue; // 虚拟节点对应的hash值
-  PysicalNode* m_father;
+  PhysicalNode* m_father;
 public:
   VirtualNode();
-  VirtualNode(PysicalNode* father);
-  void setVirtualNode(PysicalNode* father);
-  PysicalNode* getFatherPysiaclNode();
+  VirtualNode(PhysicalNode* father);
+  void setVirtualNode(PhysicalNode* father);
+  PhysicalNode* getFatherPhysicalNode();
   void setHash(long hash);
   long getHash();
 };
@@ -42,11 +41,11 @@ public:
 
 class HashFunction {
 public:
-  virtual long getHashValue(const string& sock) = 0;  
+  virtual long getHashValue(const std::string& sock) = 0;  
 };
 
 class MD5HashFunction : public HashFunction {
-  virtual long getHashValue(const string& sock);
+  virtual long getHashValue(const std::string& sock);
 };
 
 
@@ -55,14 +54,14 @@ public:
   ConsistentHashCircle(HashFunction* fun);
   ~ConsistentHashCircle();
   void setHashFunction(HashFunction* fun);
-  int addVirtualNode(PysicalNode* node);
-  int removeVirtualNode(PysicalNode* node);
+  int addVirtualNode(PhysicalNode* node);
+  int removeVirtualNode(PhysicalNode* node);
   int getVirtualNodeCnt();
-  PysicalNode* searchPysicalNode(const string& sock);
+  PhysicalNode* searchPhysicalNode(const std::string& sock);
 private:
   HashFunction* m_fun;
   int m_virtualNodeCnt;
-  map<unsigned long, VirtualNode*>* m_virtualNodeMap;
+  std::map<unsigned long, VirtualNode*>* m_virtualNodeMap;
 };
 
 class LoadBalanceServer {
@@ -76,6 +75,6 @@ private:
   static TcpServer* m_client;
   static event_base* m_base;
   static ConsistentHashCircle* m_consistentHashCircle;
-  static map<int, PysicalNode*>* m_pysicalNodeMap;
-  static map<int, struct event*>* m_eventMap;
+  static std::map<int, PhysicalNode*>* m_physicalNodeMap;
+  static std::map<int, struct event*>* m_eventMap;
 };

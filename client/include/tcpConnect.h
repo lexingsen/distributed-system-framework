@@ -16,26 +16,24 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <errno.h>
-using namespace std;
 
 
-class TcpConnect{
+class TcpConnect {
 private:
 	int _connectFd;
-	string _ip;
+	std::string _ip;
 	uint16_t _port;
 public:
 	int getConnectFd();
 	uint16_t getPort();
-	string getIp();
+	std::string getIp();
 
 
-	int Connect(const string& ip,short port);
+	int Connect(const std::string& ip,short port);
 	~TcpConnect();
-	int Send(const string& message);
-	int Recv(string& str);
+	int Send(const std::string& message);
+	int Recv(std::string& str);
 };
-
 #endif
 
 

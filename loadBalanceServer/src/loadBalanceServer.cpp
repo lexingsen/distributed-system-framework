@@ -2,26 +2,26 @@
 #include "public.h"
 #include <unistd.h>
 
-PysicalNode::PysicalNode():m_cnt(0) {}
-PysicalNode::PysicalNode(int cnt, const string& ip, unsigned short port):
+PhysicalNode::PhysicalNode():m_cnt(0) {}
+PhysicalNode::PhysicalNode(int cnt, const string& ip, unsigned short port):
   m_cnt(cnt),m_ip(ip), m_port(port) {
   
 }
 
-void PysicalNode::setPysicalNode(const string& ip, unsigned short port) {
+void PhysicalNode::setPhysicalNode(const string& ip, unsigned short port) {
   this->m_ip = ip;
   this->m_port = port;
 }
 
-int PysicalNode::getVirtualNodeCnt() {
+int PhysicalNode::getVirtualNodeCnt() {
   return m_cnt;
 }
 
-unsigned short PysicalNode::getPort() {
+unsigned short PhysicalNode::getPort() {
   return m_port;
 }
 
-string PysicalNode::getIp() {
+string PhysicalNode::getIp() {
   return m_ip;
 }
 
@@ -30,15 +30,15 @@ VirtualNode::VirtualNode() {
 
 }
 
-VirtualNode::VirtualNode(PysicalNode* father) {
+VirtualNode::VirtualNode(PhysicalNode* father) {
   this->m_hashValue = -1;
   this->m_father = father;
 }
-void VirtualNode::setVirtualNode(PysicalNode* father) {
+void VirtualNode::setVirtualNode(PhysicalNode* father) {
   this->m_father = father;
 }
 
-PysicalNode* VirtualNode::getFatherPysiaclNode() {
+PhysicalNode* VirtualNode::getFatherPhysicalNode() {
   return this->m_father;
 }
 
@@ -50,7 +50,7 @@ long VirtualNode::getHash() {
   return this->m_hashValue;
 }
 
-long MD5HashFunction::getHashValue(const string& sock) {
+long MD5HashFunction::getHashValue(const std::string& sock) {
   long hashValue = 0;
   unsigned char x[16];
   bzero(x, sizeof(x));
@@ -87,13 +87,13 @@ void ConsistentHashCircle::setHashFunction(HashFunction* fun) {
   this->m_fun = fun;
 }
 
-int ConsistentHashCircle::addVirtualNode(PysicalNode* node) {
+int ConsistentHashCircle::addVirtualNode(PhysicalNode* node) {
   if (!node) {
-    LOG("the pysical node is null!");
+    LOG("the physical node is null!");
     return -1;
   }
   if (node->getVirtualNodeCnt() <= 0) {
-    LOG("the pysical node has not virtual node!");
+    LOG("the physical node has not virtual node!");
     return -1;
   }
   string sock = node->getIp() + to_string(node->getPort());
@@ -124,16 +124,16 @@ int ConsistentHashCircle::addVirtualNode(PysicalNode* node) {
   } else {
     cout << "============ virtual node list ============" << endl;
     for (auto x=m_virtualNodeMap->begin(); x!=m_virtualNodeMap->end(); ++x) {
-      cout << x->first << ":" << " ip:" << x->second->getFatherPysiaclNode()->getIp() << " port:" << x->second->getFatherPysiaclNode()->getPort() << endl;
+      cout << x->first << ":" << " ip:" << x->second->getFatherPhysicalNode()->getIp() << " port:" << x->second->getFatherPhysicalNode()->getPort() << endl;
     }
     cout << "===========================================" << endl;
   }
 
-  cout << "success addPysicalNode's virtual node!" << endl;
+  cout << "success addPhysicalNode's virtual node!" << endl;
   return 0;
 }
 
-int ConsistentHashCircle::removeVirtualNode(PysicalNode* node) {
+int ConsistentHashCircle::removeVirtualNode(PhysicalNode* node) {
   if (!node) return -1;
   string sock = node->getIp() + to_string(node->getPort());
 
@@ -153,16 +153,16 @@ int ConsistentHashCircle::removeVirtualNode(PysicalNode* node) {
   } else {
     cout << "============ virtual node list ============" << endl;
     for (auto x=m_virtualNodeMap->begin(); x!=m_virtualNodeMap->end(); ++x) {
-      cout << x->first << ":" << " ip:" << x->second->getFatherPysiaclNode()->getIp() << " port:" << x->second->getFatherPysiaclNode()->getPort() << endl;
+      cout << x->first << ":" << " ip:" << x->second->getFatherPhysicalNode()->getIp() << " port:" << x->second->getFatherPhysiaclNode()->getPort() << endl;
     }
     cout << "===========================================" << endl;
   }
-  cout << "success remove pysicalNode's virtual node!" << endl;
+  cout << "success remove physicalNode's virtual node!" << endl;
   return 0;
 }
 
 
-PysicalNode* ConsistentHashCircle::searchPysicalNode(const string& sock) {
+PhysicalNode* ConsistentHashCircle::searchPhysicalNode(const string& sock) {
   unsigned long hash = this->m_fun->getHashValue(sock);
   auto it = m_virtualNodeMap->lower_bound(hash);
   if (it == m_virtualNodeMap->end()) {
@@ -170,7 +170,7 @@ PysicalNode* ConsistentHashCircle::searchPysicalNode(const string& sock) {
   }
   VirtualNode* res = it->second;
   if (!res) return nullptr;
-  else return res->getFatherPysiaclNode();
+  else return res->getFatherPhysicalNode();
 }
 
 int ConsistentHashCircle::getVirtualNodeCnt() {
@@ -181,7 +181,7 @@ event_base* LoadBalanceServer::m_base = nullptr;
 ConsistentHashCircle* LoadBalanceServer::m_consistentHashCircle = nullptr;
 TcpServer* LoadBalanceServer::m_server = nullptr;
 TcpServer* LoadBalanceServer::m_client = nullptr;
-map<int, PysicalNode*>* LoadBalanceServer::m_pysicalNodeMap = nullptr;
+map<int, PhysicalNode*>* LoadBalanceServer::m_physicalNodeMap = nullptr;
 map<int, struct event*>* LoadBalanceServer::m_eventMap = nullptr;
 
 
@@ -189,7 +189,7 @@ LoadBalanceServer::LoadBalanceServer() {
   HashFunction* fun = new MD5HashFunction();
   m_consistentHashCircle = new ConsistentHashCircle(fun);
   m_base = event_base_new();
-  m_pysicalNodeMap = new map<int, PysicalNode*>();
+  m_physicalNodeMap = new map<int, PhysicalNode*>();
   m_eventMap = new map<int, struct event*>();
 
   string ipForClinet;
@@ -238,8 +238,8 @@ void LoadBalanceServer::listenClientCallBack(int fd, short event, void* arg) {
     cout << "client port:" << ntohs(cli.sin_port) << endl;
   }
   string sock = inet_ntoa(cli.sin_addr) + to_string(ntohs(cli.sin_port));
-  PysicalNode* res = m_consistentHashCircle->searchPysicalNode(sock);
-  cout << "get pysical node ip and port:" << res->getIp() << " ," << res->getPort() << endl;
+  PhysicalNode* res = m_consistentHashCircle->searchPhysicalNode(sock);
+  cout << "get physical node ip and port:" << res->getIp() << " ," << res->getPort() << endl;
 
   Json::Value val;
   val["ip"] = res->getIp();
@@ -271,21 +271,21 @@ void LoadBalanceServer::ioEventCallBack(int fd, short event, void *arg) {
       event_free(x->second);
       m_eventMap->erase(fd);
     }
-    auto y = m_pysicalNodeMap->find(fd);
-    if (y != m_pysicalNodeMap->end()) {
-      PysicalNode* node = y->second;
+    auto y = m_physicalNodeMap->find(fd);
+    if (y != m_physicalNodeMap->end()) {
+      PhysicalNode* node = y->second;
       m_consistentHashCircle->removeVirtualNode(node);
-      cout << "remove pysical node, ip:" << node->getIp() << ", port:" << node->getPort() << endl;
+      cout << "remove physical node, ip:" << node->getIp() << ", port:" << node->getPort() << endl;
       delete node;
       node = nullptr;
-      m_pysicalNodeMap->erase(fd);
+      m_physicalNodeMap->erase(fd);
     }
-    cout << "========== pysical node list ==========" << endl;
-    auto z = m_pysicalNodeMap->begin();
-    if (z == m_pysicalNodeMap->end()) {
+    cout << "========== physical node list ==========" << endl;
+    auto z = m_physicalNodeMap->begin();
+    if (z == m_physicalNodeMap->end()) {
       cout << "null" << endl;
     } else {
-      for (; z != m_pysicalNodeMap->end(); ++z) {
+      for (; z != m_physicalNodeMap->end(); ++z) {
         cout << "fd:" << z->first << ",ip:" << z->second->getIp() << ", port:" << z->second->getPort() << endl;
       }
     }
@@ -303,12 +303,12 @@ void LoadBalanceServer::ioEventCallBack(int fd, short event, void *arg) {
     ip = ip.substr(1, strlen(ip.c_str())-3);
     unsigned short port = value["port"].asInt();
 
-    PysicalNode* node = new PysicalNode(10, ip, port);
+    PhysicalNode* node = new PhysicalNode(10, ip, port);
     m_consistentHashCircle->addVirtualNode(node);
-    m_pysicalNodeMap->insert(make_pair(fd, node));
+    m_physicalNodeMap->insert(make_pair(fd, node));
     
-    cout << "============== pysical node list ==============" << endl;
-    for (auto it=m_pysicalNodeMap->begin(); it!=m_pysicalNodeMap->end(); ++it) {
+    cout << "============== physical node list ==============" << endl;
+    for (auto it=m_physicalNodeMap->begin(); it!=m_physicalNodeMap->end(); ++it) {
       cout << it->first << ": ip:" << it->second->getIp() << ",port:" << it->second->getPort() << endl;
     }
     return;

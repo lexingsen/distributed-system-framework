@@ -1,3 +1,8 @@
+
+#ifndef __LOGGER_H__
+#define __LOGGER_H__
+
+
 #include <stdio.h>
 #include <string>
 #include <map>
@@ -40,3 +45,4 @@ std::map<int, std::string> errnoMap = {{0, "Success"},{1, "Operation not permitt
 #define LOG_MSG(msg) LOG("[Msg:%s]\n", msg)
 
 
+#endif

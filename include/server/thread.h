@@ -8,7 +8,7 @@
 #define _THREAD_H_
 
 #include "controller.h"
-#include "public.h"
+#include "logger.h"
 #include <unistd.h>
 #include <json/json.h>
 #include <pthread.h>

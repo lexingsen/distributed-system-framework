@@ -6,7 +6,7 @@
  ************************************************************************/
 
 #include <iostream>
-#include "public.h"
+#include "logger.h"
 #include "system.h"
 #include "transfer.h"
 #include "informationCollectorServerThread.h"

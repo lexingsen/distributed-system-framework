@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <json/json.h>
-#include "public.h"
+#include "logger.h"
 #include "subModule.h"
 
 using namespace std;

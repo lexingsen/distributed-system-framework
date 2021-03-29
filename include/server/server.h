@@ -10,7 +10,7 @@
 
 class Server {
 public:
-  Server(const string& ip, unsigned short port, int threadCnt);
+  Server(const std::string& ip, unsigned short port, int threadCnt);
   ~Server();
 private:
   struct event_base* m_base;

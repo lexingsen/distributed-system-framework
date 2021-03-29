@@ -4,7 +4,7 @@
 #include <map>
 #include <json/json.h>
 #include "view.h"
-#include "public.h" 
+#include "logger.h" 
 
 
 class Controller {

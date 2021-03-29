@@ -21,8 +21,8 @@ bool Transfer::sendToMainSer(const std::string& msg){
 Transfer::Transfer() {
 	LOG_FUNC_TRACE();
 	m_transferClient = new TcpConnect();
-	std::string loadBalanceServerIp = "";
-	unsigned short loadBalanceServerPort;
+	std::string loadBalanceServerIp = "127.0.0.1";
+	unsigned short loadBalanceServerPort = 6300;
 	m_transferClient->Connect(loadBalanceServerIp, loadBalanceServerPort);
 
 	std::string msg;

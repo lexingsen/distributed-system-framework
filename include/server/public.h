@@ -7,11 +7,6 @@ using namespace std;
 
 
 
-enum MAINSERVER_OPTION_TYPE_E {
-  LOGIN = 1,
-  REGISTER,
-  QUERY,
-  INSERT,
-};
+
 
 #endif

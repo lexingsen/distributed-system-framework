@@ -1,5 +1,5 @@
 #include "tcpClient.h"
-#include "public.h"
+#include "logger.h"
 #include "logger.h"
 
 TcpClient::TcpClient() {}

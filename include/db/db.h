@@ -1,10 +1,3 @@
-/*
- * @Description: 封装mysql API为MySQL类
- * @Language: C++
- * @Author: Li Si cheng
- * @Date: 2021-03-29 03:55:54
- */
-
 #ifndef __DB_H__
 #define __DB_H__
 
@@ -15,8 +8,10 @@ class MySQL {
 private:
   MYSQL* m_conn;
 public:
-  MySQL();
-  ~MySQL();
+  static MySQL* getInstance() {
+    static MySQL res;
+    return &res;
+  }
 
   bool connect();
 
@@ -25,6 +20,9 @@ public:
   MYSQL_RES* query(const std::string& sql);
 
   MYSQL* getConnection() const;
+private:  
+  MySQL();
+  ~MySQL();
 };
 
 

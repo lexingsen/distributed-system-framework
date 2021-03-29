@@ -1,5 +1,5 @@
 #include "loadBalanceServer.h"
-#include "public.h"
+#include "logger.h"
 #include "logger.h"
 #include <unistd.h>
 
@@ -193,20 +193,24 @@ LoadBalanceServer::LoadBalanceServer() {
   m_physicalNodeMap = new map<int, PhysicalNode*>();
   m_eventMap = new map<int, struct event*>();
 
-  string ipForClinet;
-  unsigned short portForClient;
+  string ipForClinet = "127.0.0.1";
+  unsigned short portForClient = 6300;
+  #if 0
   cout << "please input the ip for client to connect:";
   cin >> ipForClinet;
   cout << "please input the port for client to connect:";
   cin >> portForClient;
+  #endif
   m_client = new TcpServer(ipForClinet, portForClient);
 
-  string ipForServer;
-  unsigned short portForServer;
+  string ipForServer = "127.0.0.1";
+  unsigned short portForServer = 6200;
+  #if 0
   cout << "please input the ip for server to connect:";
   cin >> ipForServer;
   cout << "please input the port for server to connect:";
   cin >> portForServer;
+  #endif
   m_server = new TcpServer(ipForServer, portForServer);
 
 

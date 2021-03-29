@@ -1,5 +1,5 @@
-#include "db.h"
 #include "logger.h"
+#include "db.h"
 
 static std::string ip = "127.0.0.1";
 static std::string userName = "root";

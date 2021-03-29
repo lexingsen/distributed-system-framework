@@ -1,0 +1,1 @@
+/usr/bin/g++-7  -g -g  -rdynamic CMakeFiles/client.dir/informationCollectorServerThread.cpp.o CMakeFiles/client.dir/main.cpp.o CMakeFiles/client.dir/subModule.cpp.o CMakeFiles/client.dir/system.cpp.o CMakeFiles/client.dir/tcpConnect.cpp.o CMakeFiles/client.dir/tcpServer.cpp.o CMakeFiles/client.dir/transfer.cpp.o  -o ../../../bin/client -levent -lpthread -ljson 

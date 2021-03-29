@@ -7,15 +7,8 @@
 
 #ifndef __PUBLIC_H__
 #define __PUBLIC_H__
-enum CLIENT_OPTION_TYPE_E {
-	EN_INSERT=1,
-	EN_DELETE,
-	EN_UPDATE,
-	EN_SEARCH,
-	EN_REGISTER,
-	EN_LOGIN,
-	EN_INFORMATION_COLLECTOR,
-};
+
+#define LOCAL_IP "127.0.0.1"
 
 
 #endif

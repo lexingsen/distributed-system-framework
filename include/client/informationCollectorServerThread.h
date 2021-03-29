@@ -24,7 +24,7 @@
 #include "tcpServer.h"
 #include "transfer.h"
 #include "logger.h"
-#include "public.h"
+#include "logger.h"
 using namespace std;
 
 class InformationCollectorServerThread {

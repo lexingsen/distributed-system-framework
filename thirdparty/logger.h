@@ -1,3 +1,9 @@
+/*
+ * @Description: 
+ * @Language: 
+ * @Author: 
+ * @Date: 2021-03-29 01:47:19
+ */
 
 #ifndef __LOGGER_H__
 #define __LOGGER_H__
@@ -34,7 +40,16 @@ static std::map<int, std::string> errnoMap = {{0, "Success"},{1, "Operation not 
 {120, "Is a named type file"},{121, "Remote I/O error"},{122, "Disk quota exceeded"},{123, "No medium found"},{124, "Wrong medium type"},
 {125, "Operation canceled"},{126, "Required key not available"},{127, "Key has expired"},{128, "Key has been revoked"},{129, "Key was rejected by service"},
 {130, "Owner died"},{131, "State not recoverable"},{132, "Operation not possible due to RF-kill"},{133, "Memory page has hardware error"}};
-
+enum OPTION_TYPE_E {
+  EN_INSERT=1,
+	EN_DELETE,
+	EN_UPDATE,
+	EN_SEARCH,
+	EN_REGISTER,
+	EN_LOGIN,
+  EN_QUERY,
+	EN_INFORMATION_COLLECTOR
+};
 
 
 #define LOG(fmt, para...) do {printf(fmt"\r", ##para);} while(0)

@@ -13,8 +13,8 @@ struct event_base* InformationCollectorServerThread::m_base = nullptr;
 //信息采集器线程函数用来处理信息采集机器的连接
 InformationCollectorServerThread::InformationCollectorServerThread() {
 	LOG_FUNC_TRACE();
-	std::string ip = "";
-	unsigned short port;
+	std::string ip = "127.0.0.1";
+	unsigned short port = 6000;
 	m_informationCollectorServer = new TcpServer(ip, port);
 	m_base = event_base_new();
 

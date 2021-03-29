@@ -1,6 +1,7 @@
 #ifndef _VIEW_H_
 #define _VIEW_H_
 #include <json/json.h>
+#include "db.h"
 
 class View {
 public:

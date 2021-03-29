@@ -2,10 +2,10 @@
 
 
 Controller::Controller() {
-  m_modelMap.insert(make_pair(LOGIN, new LoginView()));
-  m_modelMap.insert(make_pair(REGISTER, new RegisterView()));
-  m_modelMap.insert(make_pair(INSERT, new InsertView()));
-  m_modelMap.insert(make_pair(QUERY, new QueryView()));
+  m_modelMap.insert(std::make_pair(EN_LOGIN, new LoginView()));
+  m_modelMap.insert(std::make_pair(EN_REGISTER, new RegisterView()));
+  m_modelMap.insert(std::make_pair(EN_INSERT, new InsertView()));
+  m_modelMap.insert(std::make_pair(EN_QUERY, new QueryView()));
 }
 
 Controller::~Controller() {

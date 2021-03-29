@@ -5,7 +5,7 @@
 #include <json/json.h>
 #include <pthread.h>
 #include "transfer.h"
-#include "public.h"
+#include "logger.h"
 
 
 class SubModule {

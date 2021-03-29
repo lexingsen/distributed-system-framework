@@ -10,8 +10,8 @@ void clientIOEventCallBack(int fd, short event, void *arg) {
     close(fd);
     return;
   } 
-  std::cout << "============ client data ============" << endl;
-  string msg(buffer);
+  std::cout << "============ client data ============" << std::endl;
+  std::string msg(buffer);
   Json::Value value;
   Json::Reader reader;
 
@@ -35,7 +35,7 @@ void socketPairIOEventCallBack(int fd, short event, void *arg) {
     return;
   }
   event_add(clientIOEvent, nullptr);
-  thread->m_eventMap->insert(make_pair(cfd, clientIOEvent));
+  thread->m_eventMap->insert(std::make_pair(cfd, clientIOEvent));
 }
 
 

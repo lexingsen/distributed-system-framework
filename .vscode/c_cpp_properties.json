@@ -4,8 +4,10 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/server/include/",
-                "${workspaceFolder}/client/include/",
+                "${workspaceFolder}/include/server",
+                "${workspaceFolder}/include/client",
+                "${workspaceFolder}/include/db",
+                "${workspaceFolder}/include/loadBalanceServer",
                 "${workspaceFolder}/thirdparty/"
             ],
             "defines": [

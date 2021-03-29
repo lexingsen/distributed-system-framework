@@ -1,5 +1,5 @@
 #include "server.h"
-#include "public.h"
+#include "logger.h"
 #include "logger.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -20,7 +20,7 @@ void listenClientConnectEventCallBack(int fd, short event, void *arg) {
   }
 }
 
-Server::Server(const string& ip, unsigned short port, int threadCnt) {
+Server::Server(const std::string& ip, unsigned short port, int threadCnt) {
   m_listenFd = socket(AF_INET, SOCK_STREAM, 0);
   if (-1 == m_listenFd) {
     LOG_FUNC_MSG("socket()", errnoMap[errno]);
@@ -46,7 +46,7 @@ Server::Server(const string& ip, unsigned short port, int threadCnt) {
   m_pool = new ThreadPool(threadCnt);
   m_tcpClient = new TcpClient();
 
-  string loadBalanceServerIP;
+  std::string loadBalanceServerIP;
   std::cout << "input loadBalanceServer ip:";
   std::cin >> loadBalanceServerIP;
   unsigned short loadBalanceServerPort;

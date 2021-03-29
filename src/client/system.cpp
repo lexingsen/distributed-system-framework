@@ -7,7 +7,7 @@
 
 #include "system.h"
 #include "transfer.h"
-#include "public.h"
+#include "logger.h"
 
 typedef void (SubModule::*PFUNC)();
 typedef struct {
@@ -48,7 +48,7 @@ void System::Login(){
 	Json::Value val;
 	val["type"] = EN_LOGIN;
 	val["name"] = name.c_str();
-	val["pw"] = pw.c_str();
+	val["password"] = pw.c_str();
 
 	//使用默认的ip和port进行发送
 	Transfer::getInstance()->sendToMainSer(val.toStyledString());

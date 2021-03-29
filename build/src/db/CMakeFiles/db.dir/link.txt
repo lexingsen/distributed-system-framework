@@ -1,1 +1,0 @@
-/usr/bin/g++-7  -g -g  -rdynamic CMakeFiles/db.dir/db.cpp.o  -o ../../../bin/db -lmysqlclient 

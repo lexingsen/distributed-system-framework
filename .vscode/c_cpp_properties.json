@@ -8,6 +8,7 @@
                 "${workspaceFolder}/include/client",
                 "${workspaceFolder}/include/db",
                 "${workspaceFolder}/include/loadBalanceServer",
+                "${workspaceFolder}/include/dbConnectionPool",
                 "${workspaceFolder}/thirdparty/"
             ],
             "defines": [

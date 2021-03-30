@@ -53,6 +53,7 @@ void* threadTaskFunction(void *arg) {
 
 Thread::Thread() {
   m_controller = new Controller();
+  m_eventMap = new std::map<int, struct event*>();
   if (-1 == socketpair(AF_UNIX, SOCK_STREAM, 0, m_socketpairFd)) {
     LOG_FUNC_MSG("socketpair()", errnoMap[errno]);
     return ;
@@ -68,10 +69,11 @@ Thread::Thread() {
 Thread::~Thread() {
   event_base_free(m_base);
   delete m_controller;
+  delete m_eventMap;
 }
 
 
-int Thread::getEventMapSize() {
+int Thread::getEventMapSize() const {
   return m_eventMap->size();
 }
 

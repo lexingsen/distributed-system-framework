@@ -1,4 +1,5 @@
 #include "threadPool.h"
+#include "logger.h"
 
 
 ThreadPool::ThreadPool(int threadCnt) : m_threadCnt(threadCnt) {
@@ -16,6 +17,7 @@ ThreadPool::~ThreadPool() {
 
 
 int ThreadPool::getSubThreadSocketPairFd() {
+  LOG_FUNC_TRACE();
   static int robin = 0;
   int x = m_pool[robin ++ % m_threadCnt]->getSocketPairFdFirst();
   std::cout << "=========== thread pressure ===========" << std::endl;

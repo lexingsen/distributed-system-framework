@@ -24,6 +24,7 @@ SubModuleHandler subModuleHandlerMap[] = {
 
 System::System() {
 	m_subModule = new SubModule();
+	m_subModule->startSuModuleThread();
 }
 System::~System() {
 	delete m_subModule;
@@ -63,17 +64,17 @@ void System::Login(){
 	Json::Reader read;
 	Json::Value res;
 	if(!read.parse(recvMsg, res)){
-		cout<<"converse json object fail!errno"<<errno<<endl;
+		LOG_FUNC_MSG("json reader parse fail!", errnoMap[errno]);
 		return;
 	}
 
 	//去掉换行符
 	char message[128] = {0};
-	strcat(message,res["message"].toStyledString().c_str());
-	message[strlen(message)-1] = '\0';
+	strcat(message,res["message"].asCString());
+	LOG_MSG(message);
 
-	if(strcmp(message,"\"login success!\"") == 0){
-
+	if (strcmp(message,"login success!") == 0){
+		m_subModule->menu();
 		int type;
 		std::cout << "please input your type:";
 		std::cin >> type;
@@ -112,7 +113,7 @@ void System::Register() {
 	Json::Reader read;
 	Json::Value res;
 	if(!read.parse(recvMessage,res)){
-		cout<<"converse json object fail!errno"<<errno<<endl;
+		LOG_FUNC_MSG("json reader parse fail!", errnoMap[errno]);
 		return;
 	}
 
@@ -122,7 +123,6 @@ void System::Register() {
 	message[strlen(message)-1] = '\0';
 
 	if(strcmp(message,"\"register success!\"") == 0){
-		m_subModule->startSuModuleThread();
 		m_subModule->menu();
 
 		int type;

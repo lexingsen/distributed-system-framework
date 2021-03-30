@@ -31,7 +31,7 @@ private:
 public:
   Thread();
   ~Thread();
-  int getEventMapSize();
+  int getEventMapSize() const;
   int getSocketPairFdFirst();
   int getSocketPairFdSecond();
   pthread_t getId();

@@ -2,6 +2,7 @@
 #define _THREAD_POOL_H_
 
 #include "thread.h"
+#include "connectionPool.h"
 #include <vector>
 
 class ThreadPool {
@@ -11,7 +12,7 @@ public:
   int getSubThreadSocketPairFd();
 private:
   int m_threadCnt;
-  std::vector<Thread*> m_pool;  
+  std::vector<Thread*> m_pool;
 };
 
 

@@ -15,5 +15,6 @@ Controller::~Controller() {
 }
 
 void Controller::process(int fd, Json::Value& value) {
+  LOG_FUNC_TRACE();
   m_modelMap[value["type"].asInt()]->process(fd, value);
 }

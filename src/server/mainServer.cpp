@@ -7,6 +7,7 @@
 
 
 void listenClientConnectEventCallBack(int fd, short event, void *arg) {
+  LOG_FUNC_TRACE();
   Server *ser = static_cast<Server*>(arg);
   if (EV_READ | event) {
     struct sockaddr_in cli;
@@ -21,6 +22,7 @@ void listenClientConnectEventCallBack(int fd, short event, void *arg) {
 }
 
 Server::Server(const std::string& ip, unsigned short port, int threadCnt) {
+  LOG_FUNC_TRACE();
   m_listenFd = socket(AF_INET, SOCK_STREAM, 0);
   if (-1 == m_listenFd) {
     LOG_FUNC_MSG("socket()", errnoMap[errno]);
@@ -46,12 +48,12 @@ Server::Server(const std::string& ip, unsigned short port, int threadCnt) {
   m_pool = new ThreadPool(threadCnt);
   m_tcpClient = new TcpClient();
 
-  std::string loadBalanceServerIP;
-  std::cout << "input loadBalanceServer ip:";
-  std::cin >> loadBalanceServerIP;
-  unsigned short loadBalanceServerPort;
-  std::cout << "input loadBalanceServer port:";
-  std::cin >> loadBalanceServerPort;
+  std::string loadBalanceServerIP = "127.0.0.1";
+  // std::cout << "input loadBalanceServer ip:";
+  // std::cin >> loadBalanceServerIP;
+  unsigned short loadBalanceServerPort = 6200;
+  // std::cout << "input loadBalanceServer port:";
+  // std::cin >> loadBalanceServerPort;
   m_tcpClient->Connect(loadBalanceServerIP, loadBalanceServerPort);
   Json::Value value;
   value["ip"] = ip;

@@ -18,7 +18,7 @@ SubModule::~SubModule(){
 
 void SubModule::menu(){
 	cout<<"=================="<<endl;
-	cout<<"===== 1.插入 ====="<<endl;
+	cout<<"===== 1.增加黑名单成员 ====="<<endl;
 	cout<<"===== 2.删除 ====="<<endl;
 	cout<<"===== 3.更新 ====="<<endl;
 	cout<<"===== 4.查找 ====="<<endl;
@@ -36,16 +36,18 @@ void SubModule::startSuModuleThread() {
 
 void SubModule::Insert(){
 	cout<<"=====this is SubModule::Insert() interface====="<<endl;
-	string name,id;
-	cout<<"please input the tourist's name:";
-	cin>>name;
-	cout<<"please input the tourist's id:";
-	cin>>id;
+	string name,id_card;
+	cout << "please input the tourist's name:";
+	cin >> name;
+	cout << "please input the tourist's id_card:";
+	cin >> id_card;
 
 	Json::Value val;
+	static int blacklistCnt = 1;
 	val["type"] = EN_INSERT;
+	val["id"] = blacklistCnt ++;
 	val["name"] = name.c_str();
-	val["id"] = id.c_str();
+	val["id_card"] = id_card.c_str();
 	Transfer::getInstance()->sendToMainSer(val.toStyledString());
 }
 

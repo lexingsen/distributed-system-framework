@@ -15,6 +15,7 @@
 #include <sys/stat.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <json/json.h>
 #include <iostream>
 #include <string>
 #include <errno.h>
@@ -46,14 +47,20 @@ int main() {
 		exit(0);
 	}
 
-	std::string id = "";
-	std::cout << "please input the tourist's id:";
-	std::cin >> id;
-	send(sockfd, id.c_str(), strlen(id.c_str()), 0);
+	std::string id_card = "";
+	std::cout << "please input the tourist's id_card:";
+	std::cin >> id_card;
+	std::string name = "";
+	std::cout << "please input the tourist's name:";
+	std::cin >> name;
+	Json::Value value;
+	value["name"] = name;
+	value["id_card"] = id_card;
+	send(sockfd, value.toStyledString().c_str(), strlen(value.toStyledString().c_str()), 0);
 
-	char buf[128] = {0};
+	char buf[BUF_LEN] = {0};
 	
-	recv(sockfd, buf, 127, 0);
+	recv(sockfd, buf, BUF_LEN-1, 0);
 	std::cout << buf << std::endl;
 	
 	return 0;

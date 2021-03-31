@@ -8,6 +8,14 @@ public:
   virtual void process(int fd, Json::Value &value) = 0;
 };
 
+class InformationCollectorView : public View {
+public:
+  InformationCollectorView();
+  ~InformationCollectorView();
+
+  void process(int fd, Json::Value& value);  
+};
+
 class LoginView : public View {
 public:
   LoginView();

@@ -30,17 +30,20 @@ System::~System() {
 	delete m_subModule;
 }
 
-void System::menu(){
-	cout<<"====================="<<endl;
-	cout<<"====== 5.注册 ======="<<endl;
-	cout<<"====== 6.登录 ======="<<endl;
-	cout<<"====== 7.退出 ======="<<endl;
-	cout<<"====================="<<endl;
+void System::menu() {
+	std::cout << "************************************************************" << std::endl;
+	std::cout << "****************** welcome to main men ui ******************" << std::endl;
+	std::cout << "************************************************************" << std::endl;
+	std::cout << "******************      (1).login         ******************" << std::endl;
+	std::cout << "******************      (2).register      ******************" << std::endl;
+	std::cout << "******************      (3).exit          ******************" << std::endl;
+	std::cout << "************************************************************" << std::endl;
+	std::cout << "************************************************************" << std::endl;
 }
 
-void System::Login(){
+void System::Login() {
 	std::cout << "=====this is login user interface=====" << std::endl;
-	std::string name,pw;
+	std::string name, pw;
 	std::cout << "please input your name:";
 	std::cin >> name;
 	std::cout << "please input your password:";
@@ -51,15 +54,12 @@ void System::Login(){
 	val["name"] = name.c_str();
 	val["password"] = pw.c_str();
 
-	//使用默认的ip和port进行发送
-	Transfer::getInstance()->sendToMainSer(val.toStyledString());
-	cout<<"已经将登录信息发送给主服务器!请等待..."<<endl;
 
-	//使用默认的ip和port进行发送
-	string recvMsg;
+	Transfer::getInstance()->sendToMainSer(val.toStyledString());
+	std::string recvMsg;
 	Transfer::getInstance()->recvFromMainSer(recvMsg);
 	
-	cout<<"服务器:"<<recvMsg;
+	
 	
 	Json::Reader read;
 	Json::Value res;
@@ -68,23 +68,24 @@ void System::Login(){
 		return;
 	}
 
-	//去掉换行符
-	char message[128] = {0};
-	strcat(message,res["message"].asCString());
-	LOG_MSG(message);
+	char buf[BUF_LEN] = {0};
+	strcat(buf, res["message"].asCString());
+	LOG_SOURCE_MSG("mainServer", buf);
 
-	if (strcmp(message,"login success!") == 0){
+	if (strcmp(buf, "login success!") == 0) {
 		m_subModule->menu();
 		int type;
 		std::cout << "please input your type:";
 		std::cin >> type;
 		getchar();
-		for(int i = 0; i < sizeof(subModuleHandlerMap)/sizeof(SubModuleHandler);++i){
+		for(int i = 0; i < sizeof(subModuleHandlerMap)/sizeof(SubModuleHandler); ++i){
 			if(type == subModuleHandlerMap[i].type) {
 				(m_subModule->*subModuleHandlerMap[i].pfunc)();
+				break;
 			}
 		}
 	}
+	return;
 }
 
 void System::Register() {
@@ -94,47 +95,34 @@ void System::Register() {
 	std::cout << "please input your name:";
 	std::cin >> name;
 	std::cout << "please input your password:";
-	cin>>pw;
+	std::cin >> pw;
 
 	Json::Value val;
 	val["type"] = EN_REGISTER;
 	val["name"] = name.c_str();
 	val["pw"] = pw.c_str();
 
-	//使用默认的ip和port进行发送
 	Transfer::getInstance()->sendToMainSer(val.toStyledString());
 
-	cout<<"已经将注册信息发送给主服务器!请等待"<<endl;
-	std::string recvMessage;
-	//使用默认的ip和port进行发送
-	Transfer::getInstance()->recvFromMainSer(recvMessage);
-	cout<<"服务器:"<<recvMessage<<endl;
+	std::string recvMsg;
+	Transfer::getInstance()->recvFromMainSer(recvMsg);
 
 	Json::Reader read;
 	Json::Value res;
-	if(!read.parse(recvMessage,res)){
+	if(!read.parse(recvMsg,res)) {
 		LOG_FUNC_MSG("json reader parse fail!", errnoMap[errno]);
 		return;
 	}
 
-	//去掉换行符
-	char message[128] = {0};
-	strcat(message,res["message"].toStyledString().c_str());
-	message[strlen(message)-1] = '\0';
+	char buf[BUF_LEN] = {0};
+	strcat(buf, res["message"].asCString());
 
-	if(strcmp(message,"\"register success!\"") == 0){
-		m_subModule->menu();
-
-		int type;
-		cout<<"please input your type:";
-		std::cin >> type;
-		getchar();
-		for(int i = 0; i < sizeof(subModuleHandlerMap)/sizeof(SubModuleHandler); ++i) {
-			if(type == subModuleHandlerMap[i].type){
-				(m_subModule->*subModuleHandlerMap[i].pfunc)();
-			}
-		}
+	if(strcmp(buf, "\"register success!\"") == 0){
+		LOG_MSG(buf);
 	}
+	return;
 }
 
-void System::Exit(){return;}
+void System::Exit() {
+	return;
+}

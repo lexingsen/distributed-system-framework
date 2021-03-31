@@ -2,7 +2,7 @@
 #include "logger.h"
 
 bool ConnectionPool::loadConfigFile() {
-  FILE* pf = fopen("../../config/mysql.cfg", "r");
+  FILE* pf = fopen(MYSQL_CONFIG_PATH, "r");
   if (nullptr == pf) {
     LOG_MSG("mysql.cfg file is not exist!");
     return false;

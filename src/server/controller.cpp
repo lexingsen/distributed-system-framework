@@ -6,6 +6,7 @@ Controller::Controller() {
   m_modelMap.insert(std::make_pair(EN_REGISTER, new RegisterView()));
   m_modelMap.insert(std::make_pair(EN_INSERT, new InsertView()));
   m_modelMap.insert(std::make_pair(EN_QUERY, new QueryView()));
+  m_modelMap.insert(std::make_pair(EN_INFORMATION_COLLECTOR, new InformationCollectorView()));
 }
 
 Controller::~Controller() {

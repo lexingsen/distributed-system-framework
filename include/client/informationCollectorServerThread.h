@@ -57,19 +57,25 @@ public:
 	static void informationCollectorIOEventCallBack(int fd, short event, void* arg){
 		LOG_FUNC_TRACE();
 		TcpServer* server = static_cast<TcpServer*>(arg);
-		string id;
-		if (server->Recv(fd,id) <= 0) {
+		string msg;
+		if (server->Recv(fd, msg) <= 0) {
 			LOG("informationCollector client shutdown!");
 			event_free(m_eventMap[fd]);
 			m_eventMap.erase(fd);
 			close(fd);
 			return ;
 		}
+		Json::Value res;
+		Json::Reader reader;
+		if (-1 == reader.parse(msg, res)) {
+			LOG_MSG("json reader parse fail!");
+			return;
+		}
 
 		Json::Value val;
 		val["type"] = EN_INFORMATION_COLLECTOR;
-		val["fd"] = fd;
-		val["message"] = id.c_str();
+		val["id_card"] = res["id_card"].asCString();
+		val["name"] = res["name"].asCString();
 
 		cout<<"selecter data:"<<val;
 		cout<<"将信息采器的数据发送给主服务器!"<<endl;

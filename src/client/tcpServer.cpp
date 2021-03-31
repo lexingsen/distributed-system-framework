@@ -52,12 +52,18 @@ int TcpServer::Accept(){
 	return cli_fd;
 }
 
+
+
 int TcpServer::Recv(int fd, std::string& str){
 	char buf[128] = {0};
 	int n = recv(fd,buf,127,0);
 	str = buf;
 	return n;
 }
+
+
+
+
 
 int TcpServer::Send(int fd,const std::string& msg) {
 	int n = send(fd, msg.c_str(), strlen(msg.c_str()),0);

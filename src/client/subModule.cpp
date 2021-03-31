@@ -12,18 +12,20 @@ SubModule::SubModule(){
 	m_informationCollectorThread = new InformationCollectorServerThread();
 }
 
-SubModule::~SubModule(){
+SubModule::~SubModule() {
 	delete m_informationCollectorThread;
 }
 
-void SubModule::menu(){
-	cout<<"=================="<<endl;
-	cout<<"===== 1.增加黑名单成员 ====="<<endl;
-	cout<<"===== 2.删除 ====="<<endl;
-	cout<<"===== 3.更新 ====="<<endl;
-	cout<<"===== 4.查找 ====="<<endl;
-	cout<<"===== 5.退出 ====="<<endl;
-	cout<<"=================="<<endl;
+void SubModule::menu() {
+	std::cout << "****************************************************************" << std::endl;
+	std::cout << "****************************************************************" << std::endl;
+	std::cout << "***************** welcome to submodule menu ui *****************" << std::endl;
+	std::cout << "*****************       (4).增加黑名单成员       *****************" << std::endl;
+	std::cout << "*****************       (5).删除黑名单成员       *****************" << std::endl;
+	std::cout << "*****************       (6).更新单成员       *****************" << std::endl;
+	std::cout << "*****************       (7).查找黑名单成员       *****************" << std::endl;
+	std::cout << "****************************************************************" << std::endl;
+	std::cout << "****************************************************************" << std::endl;
 }
 
 
@@ -35,20 +37,19 @@ void SubModule::startSuModuleThread() {
 
 
 void SubModule::Insert(){
-	cout<<"=====this is SubModule::Insert() interface====="<<endl;
-	string name,id_card;
-	cout << "please input the tourist's name:";
-	cin >> name;
-	cout << "please input the tourist's id_card:";
-	cin >> id_card;
+	std::cout << "=====this is SubModule::Insert() interface=====" << std::endl;
+	std::string name,id_card;
+	std::cout << "please input the tourist's name:";
+	std::cin >> name;
+	std::cout << "please input the tourist's id_card:";
+	std::cin >> id_card;
 
 	Json::Value val;
-	static int blacklistCnt = 1;
 	val["type"] = EN_INSERT;
-	val["id"] = blacklistCnt ++;
 	val["name"] = name.c_str();
 	val["id_card"] = id_card.c_str();
 	Transfer::getInstance()->sendToMainSer(val.toStyledString());
+	return;
 }
 
 void SubModule::Delete(){}

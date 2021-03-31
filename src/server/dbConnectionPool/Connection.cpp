@@ -21,16 +21,16 @@ std::string userName, std::string password, std::string dbName) {
 }
 
 bool Connection::update(std::string&& sql) {
-  if (mysql_query(m_conn, sql.c_str())) {
-    LOG_FUNC_MSG("mysql_query()", "error!");
-    return false;
+  if (!mysql_query(m_conn, sql.c_str())) {
+    LOG_FUNC_MSG("mysql_query()", "update success!");
+    return true;
   }
-  return true;
+  return false;
 }
 
 MYSQL_RES* Connection::query(std::string&& sql) {
   if (mysql_query(m_conn, sql.c_str())) {
-    LOG_MSG("mysql_query() query fail!");
+    LOG_FUNC_MSG("mysql_query()", "query success!");
     return nullptr;
   }
   return mysql_use_result(m_conn);

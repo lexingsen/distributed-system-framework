@@ -1,8 +1,9 @@
 /*************************************************************************
-    > File Name: cil.cpp
-    > Author: lisicheng
-    > Mail: 1050592374@qq.com 
+    > File Name: informationCollectorClient.cpp
+    > Author: lexingsen
+    > Mail: lexingsen@qq.com 
     > Created Time: Fri 21 Dec 2018 08:47:55 PM PST
+	> Modify Time: Sun 7 Aug 2021 22:50:00 PM PST
  ************************************************************************/
 
 #include <stdio.h>
@@ -29,7 +30,7 @@ int main() {
 		exit(0);
 	}
 
-	struct sockaddr_in ser;
+	struct sockaddr_in ser = { { 0 } };
 	ser.sin_family = AF_INET;
 
 	std::string ip = "";

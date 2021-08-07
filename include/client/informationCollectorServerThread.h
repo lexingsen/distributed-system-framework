@@ -89,7 +89,7 @@ public:
 		event_base_dispatch(base);
 	}
 	
-	InformationCollectorServerThread();
+	InformationCollectorServerThread(unsigned short);
 	void sendToInformationCollector(int fd, std::string& msg);
 
 

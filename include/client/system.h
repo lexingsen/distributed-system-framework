@@ -17,7 +17,7 @@ using namespace std;
 
 class System {
 public:
-	System();
+	System(unsigned short);
 	~System();
 
 	void menu();

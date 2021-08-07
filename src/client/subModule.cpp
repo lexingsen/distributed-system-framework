@@ -8,8 +8,8 @@
 
 #include "subModule.h"
 
-SubModule::SubModule(){
-	m_informationCollectorThread = new InformationCollectorServerThread();
+SubModule::SubModule(unsigned short port){
+	m_informationCollectorThread = new InformationCollectorServerThread(port);
 }
 
 SubModule::~SubModule() {

@@ -25,8 +25,13 @@ SystemHandler systemHandlerMap[]={
 };
 
 
-int main() {
-	System* s = new System();
+int main(int argc, char* argv[]) {
+	if (argc < 2) {
+		std::cout << "[usage] ./client port" << std::endl;
+		return 0;
+	}
+
+	System* s = new System((unsigned short)atoi(argv[1]));
 	sleep(1);
 
 	for (;;) {

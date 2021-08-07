@@ -11,7 +11,7 @@
 class SubModule {
 public:
 
-	SubModule();
+	SubModule(unsigned short);
 	~SubModule();
 	void menu();
 	void startSuModuleThread();

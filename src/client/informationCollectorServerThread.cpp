@@ -11,10 +11,9 @@ std::map<int, struct event*> InformationCollectorServerThread::m_eventMap = std:
 struct event_base* InformationCollectorServerThread::m_base = nullptr;
 
 //信息采集器线程函数用来处理信息采集机器的连接
-InformationCollectorServerThread::InformationCollectorServerThread() {
+InformationCollectorServerThread::InformationCollectorServerThread(unsigned short port) {
 	LOG_FUNC_TRACE();
 	std::string ip = "127.0.0.1";
-	unsigned short port = 6000;
 	m_informationCollectorServer = new TcpServer(ip, port);
 	m_base = event_base_new();
 

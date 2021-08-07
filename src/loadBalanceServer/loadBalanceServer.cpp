@@ -195,25 +195,13 @@ LoadBalanceServer::LoadBalanceServer() {
 
   string ipForClinet = "127.0.0.1";
   unsigned short portForClient = 6300;
-  #if 0
-  cout << "please input the ip for client to connect:";
-  cin >> ipForClinet;
-  cout << "please input the port for client to connect:";
-  cin >> portForClient;
-  #endif
   m_client = new TcpServer(ipForClinet, portForClient);
 
   string ipForServer = "127.0.0.1";
   unsigned short portForServer = 6200;
-  #if 0
-  cout << "please input the ip for server to connect:";
-  cin >> ipForServer;
-  cout << "please input the port for server to connect:";
-  cin >> portForServer;
-  #endif
   m_server = new TcpServer(ipForServer, portForServer);
 
-
+  std:cout << "wait for client and server to connect" << std::endl;
   struct event* listenServerEvent = event_new(m_base, m_server->getListenFd(), EV_READ|EV_PERSIST, LoadBalanceServer::listenServerCallBack, m_server);
   if (!listenServerEvent) {
     LOG_FUNC_MSG("event_new()", errnoMap[errno]);

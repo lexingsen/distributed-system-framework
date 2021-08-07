@@ -22,8 +22,8 @@ SubModuleHandler subModuleHandlerMap[] = {
 	{EN_SEARCH, &SubModule::Search}
 };
 
-System::System() {
-	m_subModule = new SubModule();
+System::System(unsigned short port) {
+	m_subModule = new SubModule(port);
 	m_subModule->startSuModuleThread();
 }
 System::~System() {

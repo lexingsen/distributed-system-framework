@@ -55,7 +55,7 @@ int TcpServer::Accept(){
 
 
 int TcpServer::Recv(int fd, std::string& str){
-	char buf[128] = {0};
+	char buf[BUF_LEN] = {0};
 	int n = recv(fd,buf,127,0);
 	str = buf;
 	return n;

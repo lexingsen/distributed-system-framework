@@ -30,7 +30,7 @@ int main() {
 		exit(0);
 	}
 
-	struct sockaddr_in ser = { { 0 } };
+	struct sockaddr_in ser;
 	ser.sin_family = AF_INET;
 
 	std::string ip = "";

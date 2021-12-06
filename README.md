@@ -54,10 +54,12 @@
 
 ## 四.部署
 - 1.安装好mysql数据库，配置好用户名和密码(name:root, password:111111)
-- 2.按照doc目录下的sql文件创建数据库和表
-- 3.首先启动负载均衡服务器
-- 4.启动多个服务器，主动连接负载均衡服务器，让其纳管
-- 5.客户端连接服务均衡服务器，让其分配一个合适的服务器ip+port,客户端收到ip+port后，主动去与服务器建连
+    - service mysql start
+    - mysql -u root -p 然后直接回车
+    - 按照doc目录下的sql文件创建数据库和表
+- 2.首先启动负载均衡服务器
+- 3.启动多个服务器，主动连接负载均衡服务器，让其纳管
+- 4.客户端连接服务均衡服务器，让其分配一个合适的服务器ip+port,客户端收到ip+port后，主动去与服务器建连
 
 
 
@@ -74,6 +76,17 @@
 
 
 ## 八.Docker镜像
+
+```bash
+docker build -t dsf:v1.0 .  # 构建镜像
+docker run -it dsf:v1.0 /bin/bash
+cd /home
+git git clone https://github.com/lexingsen/distributed-system-framework.git
+cd distributed-system-framework
+cd build
+cmake ..
+make
+```
 
 ## 八.QQ交流群
 823170006

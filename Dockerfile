@@ -9,6 +9,7 @@ RUN apt-get install libjsoncpp-dev -y
 RUN ln -s /usr/include/jsoncpp/json/ /usr/include/json
 RUN apt-get install libmysqlclient-dev -y
 RUN apt-get install libssl-dev -y
+RUN apt install mysql-server -y
 RUN apt-get install git -y
 # RUN git clone https://github.com/lexingsen/distributed-system-framework.git
 RUN apt-get install cmake -y

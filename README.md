@@ -20,7 +20,7 @@
 
 （6）单例模式
 
-（7）负载均衡算法之一致性hash算法
+（7）负载均衡算法之一致性Hash算法
 
 （8）CJson格式的消息封装
 
@@ -37,6 +37,11 @@
     - mysql
     - json
     - openssl(md5算法)
+- 三方库安装
+    - sudo apt-get install libevent-dev
+    - sudo apt-get install libjsoncpp-dev
+    - sudo apt-get install libmysqlclient-dev
+    - sudo apt-get install libssl-dev
 - 编译
     - 编译环境
         - g++ 7.5.0
@@ -47,7 +52,7 @@
         source build.sh
         ```
 
-## 三.部署
+## 四.部署
 - 1.安装好mysql数据库，配置好用户名和密码(name:root, password:111111)
 - 2.按照doc目录下的sql文件创建数据库和表
 - 3.首先启动负载均衡服务器
@@ -56,16 +61,19 @@
 
 
 
-## 四.项目工作流程
+## 五.项目工作流程
 
 
 
-## 五.其他的想法
+## 六.其他的想法
 - 负载均衡服务器与服务器之间的连接属于长连接，设置心跳包或keepalive保活机制
 - 增加redis缓存层
 
 
-## 六.项目架构
+## 七.项目架构
 
-## 七.QQ交流群
+
+## 八.Docker镜像
+
+## 八.QQ交流群
 823170006

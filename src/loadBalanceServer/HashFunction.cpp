@@ -1,5 +1,3 @@
-#pragma once
-
 #include <cstring>
 #include <openssl/md5.h>
 #include "HashFunction.h"

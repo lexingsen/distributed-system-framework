@@ -13,7 +13,7 @@
 #include <string>
 #include <map>
 
-static std::map<int, std::string> errnoMap = {
+static std::map<int, const char*> errnoMap = {
 	{0, "Success"},
 	{1, "Operation not permitted"},
 	{2, "No such file or directory"},
@@ -164,7 +164,8 @@ enum OPTION_TYPE_E {
 
 #define SQL_LEN 1024
 #define BUF_LEN 1024
-#define MYSQL_CONFIG_PATH "/home/lsc/distributed-system-framework/config/mysql.cfg"
+// 
+#define MYSQL_CONFIG_PATH "/home/distributed-system-framework/config/mysql.cfg"
 
 
 #define LOG(fmt, para...) do {printf(fmt"\r", ##para);} while(0)

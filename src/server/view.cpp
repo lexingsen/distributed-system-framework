@@ -35,13 +35,13 @@ void LoginView::process(int fd, Json::Value& value) {
   std::string password = value["password"].asString();
   char sql[SQL_LEN] = {0};
   sprintf(sql, "select count(*) from user where name=\'%s\' and password=\'%s\' limit 1;", name.c_str(), password.c_str());
-  MYSQL_RES* mysqlRes = ConnectionPool::getInstance()->getConnection()->query(std::move(std::string(sql)));
+  MYSQL_RES* logStatus = ConnectionPool::getInstance()->getConnection()->query(std::move(std::string(sql)));
   
   Json::Value res;
-  if (mysqlRes == nullptr) {
-    res["message"] = "login fail!";
-  } else {
+  if (logStatus != nullptr) {
     res["message"] = "login success!";
+  } else {
+    res["message"] = "login fail!";
   }
   send(fd, res.toStyledString().c_str(), strlen(res.toStyledString().c_str()), 0);
   
@@ -53,7 +53,8 @@ void RegisterView::process(int fd, Json::Value& value) {
   std::string name = value["name"].asString();
   std::string password = value["password"].asString();
   char sql[SQL_LEN] = {0};
-  sprintf(sql, "insert into user values()");
+  sprintf(sql, "insert into user(name, password) values(\'%s\', \'%s\');", name.c_str(), password.c_str());
+  std:: cout << "sql:" << sql << std::endl;
   bool registerStatus = ConnectionPool::getInstance()->getConnection()->update(std::move(std::string(sql)));
   Json::Value res;
   if (registerStatus == true) {
@@ -90,10 +91,10 @@ void QueryView::process(int fd, Json::Value& value) {
   std::string idCard = value["id_card"].asString();
   char sql[SQL_LEN] = {0};
   sprintf(sql, "select count(*) from blacklist where name=\'%s\' and id_card=\'%s\' limit 1", name.c_str(), idCard.c_str());
-  MYSQL_RES* mysqlRes = ConnectionPool::getInstance()->getConnection()->query(std::move(std::string(sql)));
+  bool logStatus = ConnectionPool::getInstance()->getConnection()->query(std::move(std::string(sql)));
   
   Json::Value res;
-  if (nullptr == mysqlRes) {
+  if (logStatus == true) {
     res["message"] = "this tourist is not exist!";
   } else {
     res["message"] = "this tourist is exist!";

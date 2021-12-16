@@ -77,7 +77,7 @@ public:
 		val["id_card"] = res["id_card"].asCString();
 		val["name"] = res["name"].asCString();
 
-		cout<<"selecter data:"<<val;
+		cout<<"selector data:"<<val;
 		cout<<"将信息采器的数据发送给主服务器!"<<endl;
 		Transfer::getInstance()->sendToMainSer(val.toStyledString());
 		cout<<"信息采集机器的数据发送给主服务器完毕!"<<endl;

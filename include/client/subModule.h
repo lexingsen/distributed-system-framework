@@ -7,6 +7,7 @@
 #include "transfer.h"
 #include "logger.h"
 
+using namespace Json;
 
 class SubModule {
 public:

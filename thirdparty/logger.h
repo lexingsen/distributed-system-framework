@@ -10,7 +10,6 @@
 
 
 #include <stdio.h>
-#include <string>
 #include <map>
 
 static std::map<int, const char*> errnoMap = {
@@ -165,15 +164,15 @@ enum OPTION_TYPE_E {
 #define SQL_LEN 1024
 #define BUF_LEN 1024
 // 
-#define MYSQL_CONFIG_PATH "/home/distributed-system-framework/config/mysql.cfg"
+#define MYSQL_CONFIG_PATH "/home/lsc/distributed-system-framework/config/mysql.cfg"
 
 
 #define LOG(fmt, para...) do {printf(fmt"\r", ##para);} while(0)
-#define LOG_FUNC_TRACE() LOG("[Line:%d][Function:%s]\n", __LINE__, __FUNCTION__)
-#define LOG_FUNC_ERROR(err) LOG("[Line:%d][Function:%s][Error:%s]\n", __LINE__, __FUNCTION__, err)
-#define LOG_SOURCE_MSG(src, msg) LOG("[Src:%s][Msg:%s]\n", src, msg)
-#define LOG_FUNC_MSG(function, msg) LOG("[Line:%d][Function:%s][Msg:%s]\n", __LINE__, function, msg)
-#define LOG_MSG(msg) LOG("[Msg:%s]\n", msg)
+#define LOG_FUNC_TRACE() LOG("[File:%s][Line:%d][Function:%s]\n",  __FILE__, __LINE__, __FUNCTION__)
+#define LOG_FUNC_ERROR(err) LOG("[File:%s][Line:%d][Function:%s][Error:%s]\n",  __FILE__, __LINE__, __FUNCTION__, err)
+#define LOG_SOURCE_MSG(src, msg) LOG("[File:%s][Src:%s][Msg:%s]\n",  __FILE__, src, msg)
+#define LOG_FUNC_MSG(function, msg) LOG("[File:%s][Line:%d][Function:%s][Msg:%s]\n",  __FILE__, __LINE__, function, msg)
+#define LOG_MSG(msg) LOG("[File:%s][Msg:%s]\n", __FILE__, msg)
 
 
 #endif

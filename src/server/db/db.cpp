@@ -30,7 +30,7 @@ bool MySQL::connect() {
 
 bool MySQL::update(const std::string& sql) {
   if (mysql_query(m_conn, sql.c_str())) {
-    LOG_FUNC_MSG(sql.c_str(), "update fail");
+    LOG_FUNC_MSG(sql.c_str(), "update fail\n");
     return false;
   }
   return true;

@@ -11,10 +11,11 @@ void listenClientConnectEventCallBack(int fd, short event, void *arg) {
   Server *ser = static_cast<Server*>(arg);
   if (EV_READ | event) {
     struct sockaddr_in cli;
-    socklen_t len;
+    socklen_t len = sizeof(cli);
     int cfd = accept(fd, (struct sockaddr*)&cli, &len);
     if (-1 == cfd) {
-      LOG_FUNC_MSG("accept()", errnoMap[errno]);
+      LOG_FUNC_ERROR("accept()");
+      printf("%s\n",strerror(errno));
       exit(0);
     }
     write(ser->m_pool->getSubThreadSocketPairFd(), (char*)&cfd, 4);
@@ -25,7 +26,7 @@ Server::Server(const std::string& ip, unsigned short port, int threadCnt) {
   LOG_FUNC_TRACE();
   m_listenFd = socket(AF_INET, SOCK_STREAM, 0);
   if (-1 == m_listenFd) {
-    LOG_FUNC_MSG("socket()", errnoMap[errno]);
+    LOG_FUNC_ERROR("socket()");
     exit(0);
   }
 

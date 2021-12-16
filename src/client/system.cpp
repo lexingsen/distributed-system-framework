@@ -72,7 +72,7 @@ void System::Login() {
 	strcat(buf, res["message"].asCString());
 	LOG_SOURCE_MSG("mainServer", buf);
 
-	if (strcmp(buf, "login success!") == 0) {
+	if (strcmp(buf, "\"login success!\"") == 0) {
 		m_subModule->menu();
 		int type;
 		std::cout << "please input your type:";
@@ -91,16 +91,16 @@ void System::Login() {
 void System::Register() {
 	LOG_FUNC_TRACE();
 	std::cout <<"=====this is register user interface=====" << std::endl;
-	std::string name,pw;
+	std::string name, password;
 	std::cout << "please input your name:";
 	std::cin >> name;
 	std::cout << "please input your password:";
-	std::cin >> pw;
+	std::cin >> password;
 
 	Json::Value val;
 	val["type"] = EN_REGISTER;
 	val["name"] = name.c_str();
-	val["pw"] = pw.c_str();
+	val["password"] = password.c_str();
 
 	Transfer::getInstance()->sendToMainSer(val.toStyledString());
 
@@ -116,9 +116,9 @@ void System::Register() {
 
 	char buf[BUF_LEN] = {0};
 	strcat(buf, res["message"].asCString());
-
+	LOG_SOURCE_MSG("mainServer", buf);
 	if(strcmp(buf, "\"register success!\"") == 0){
-		LOG_MSG(buf);
+		return;
 	}
 	return;
 }

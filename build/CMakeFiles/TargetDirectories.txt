@@ -1,0 +1,5 @@
+/home/ubuntu/lsc/dsf-lsc/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/lsc/dsf-lsc/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/lsc/dsf-lsc/build/src/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/lsc/dsf-lsc/build/src/CMakeFiles/edit_cache.dir
+/home/ubuntu/lsc/dsf-lsc/build/src/CMakeFiles/server.dir

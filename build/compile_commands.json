@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/mysqldb/mysqldb.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/mysqldb/mysqldb.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/mysqldb/mysqldb.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/redis/redis.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/redis/redis.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/redis/redis.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/utils/ipAddressPort.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/utils/ipAddressPort.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/utils/ipAddressPort.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/controller/controller.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/controller/controller.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/controller/controller.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/utils/tcpServer.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/utils/tcpServer.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/utils/tcpServer.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/mainServer/mainServer.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/mainServer/mainServer.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/mainServer/mainServer.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/threadPool/threadPool.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/threadPool/threadPool.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/threadPool/threadPool.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/thread/thread.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/thread/thread.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/thread/thread.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/reactor/reactor.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/reactor/reactor.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/reactor/reactor.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/view/view.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/view/view.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/view/view.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/logger/timeStamp.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/logger/timeStamp.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/logger/timeStamp.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/logger/message.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/logger/message.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/logger/message.cc"
+},
+{
+  "directory": "/home/ubuntu/lsc/dsf-lsc/build/src",
+  "command": "/usr/bin/g++   -I/home/ubuntu/lsc/dsf-lsc/include -I/home/ubuntu/lsc/dsf-lsc/include/logger -I/home/ubuntu/lsc/dsf-lsc/include/utils -I/home/ubuntu/lsc/dsf-lsc/include/thread -I/home/ubuntu/lsc/dsf-lsc/include/threadPool -I/home/ubuntu/lsc/dsf-lsc/include/reactor -I/home/ubuntu/lsc/dsf-lsc/include/view -I/home/ubuntu/lsc/dsf-lsc/include/controller -I/home/ubuntu/lsc/dsf-lsc/include/mainServer -I/home/ubuntu/lsc/dsf-lsc/include/mysqldb -I/home/ubuntu/lsc/dsf-lsc/include/redis  -g   -g -std=c++11 -o CMakeFiles/server.dir/logger/logger.cc.o -c /home/ubuntu/lsc/dsf-lsc/src/logger/logger.cc",
+  "file": "/home/ubuntu/lsc/dsf-lsc/src/logger/logger.cc"
+}
+]

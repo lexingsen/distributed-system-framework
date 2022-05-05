@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/view.dir/view/view.cc.o CMakeFiles/view.dir/logger/timeStamp.cc.o CMakeFiles/view.dir/logger/message.cc.o CMakeFiles/view.dir/logger/logger.cc.o  -o ../../bin/view 
